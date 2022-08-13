@@ -3,6 +3,7 @@
     session_start();
     if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'sim'){
         header('Location: index.php?login=errorauth');
+        die();
     }
 
 ?>
@@ -20,11 +21,8 @@
     <!-- Css styles -->
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        .marcador {
-            border: 1px solid red;
-        }
-    </style>
+    <!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <title>Interwebs Corp</title>
 </head>
@@ -38,19 +36,35 @@
         <a class="btn btn-outline-danger ml-auto" href="Sistema/logoff.php">Sair</a>
     </nav>
 
+    <div id="alertContainer"></div>
+
     <!-- Container -->
     <div class="container">
         <div class="row">
-            <div class="marcador pt-2 col-md-10 offset-md-1">
+            <div class="pt-2 col-md-10 offset-md-1">
                 <form class="input-group">
-                    <input class="form-control" type="url" placeholder="Adicionar url" >
+                    <input id="inputUrl" class="form-control" type="url" placeholder="Adicionar url" >
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-info">+</button>
+                        <button id="adcUrl" type="button" class="btn btn-info">+</button>
                     </div>
                 </form>
+
+                <div id="teste"></div>
+
+                <ul id="listaUrl" class="list-group">
+                </ul>
+
             </div>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="Sistema/script.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
 </body>
 </html>

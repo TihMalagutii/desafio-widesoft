@@ -9,7 +9,7 @@
     $email = $mysqli->real_escape_string($_POST['email']);
     $password = $mysqli->real_escape_string($_POST['password']);
 
-    $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND password = '$password'";
+    $sql_code = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
     $result = $mysqli->query($sql_code);
 
     if($result->num_rows > 0) {
