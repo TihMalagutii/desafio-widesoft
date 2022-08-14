@@ -10,5 +10,5 @@
 
     $url = $_POST['url'];
 
-    $sql_code = "INSERT INTO urls (url, status) VALUES ('$url', '200')";
+    $sql_code = "INSERT INTO urls (url) VALUES ('$url')";
     $result = $mysqli->query($sql_code);

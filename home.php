@@ -30,13 +30,25 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark justify-content-center">
-        <a href="#" class="navbar-brand">
-            <h1>Interwebs Corp</h1>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-center">
+        <a href="#" class="navbar-brand ml-2">
+            <h3>Interwebs Corp</h3>
         </a>
-        <a class="btn btn-outline-danger ml-auto" href="Sistema/logoff.php">Sair</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-2">
+                <a class="nav-link btn btn-outline-danger" href="Sistema/logoff.php">
+                    <i class="bi bi-box-arrow-left"></i> <span>Sair</span>
+                </a>
+            </li>
+            <li class="nav-item mr-2">
+                <a class="nav-link btn btn-outline-info" id="btnAtualizar" href="#">
+                    <i class="bi bi-arrow-clockwise"></i> <span>Atualizar</span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
+    <!-- Alerta -->
     <div id="alertContainer"></div>
 
     <!-- Container -->
@@ -46,18 +58,17 @@
                 <form class="input-group">
                     <input id="inputUrl" class="form-control" type="url" placeholder="Adicionar url">
                     <div class="input-group-append">
-                        <button id="adcUrl" type="button" class="btn btn-info">+</button>
+                        <butto id="adcUrl" type="button" class="btn btn-info">+</button>
                     </div>
                 </form>
-
-                <div id="teste"></div>
-
-                <ul id="listaUrl" class="list-group">
-                </ul>
-
+                <ul id="listaUrl" class="list-group"></ul>
+                
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div id="containerModal"></div>
 
     <!-- Scripts -->
     <script src="Sistema/script.js"></script>
