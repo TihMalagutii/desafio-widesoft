@@ -29,13 +29,13 @@ $(document).ready(function() {
 
   // Buscando Urls do banco de dados
   const loadUrls = () => {
-    fetch('Sistema/conexaourl.php')
+    fetch('./api/urls/read.php')
     .then(res => res.json())
     .then(data => {
       let output = '';
       for(let i in data){
 
-        let {id, url, body, status} = data[i];
+        let {id, url, body, status, date} = data[i];
         body = (body || '').replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
@@ -52,10 +52,17 @@ $(document).ready(function() {
 
 
         output += `
-          <li class="list-group-item mt-2" data-toggle="modal" data-target="#modal${id}">
-            <span class="badge badge-${scheme}">${status}</span>
-            <span>${url}</span> 
-          </li>
+            <li class="list-group-item mt-2 d-flex justify-content-between align-items-center flex-wrap">
+              <div>
+                <span class="badge badge-${scheme}">${status}</span>
+                <span>${url}</span>
+              </div>
+              <div class="d-flex flex-no-wrap">
+                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modal${id}"><i class="bi bi-eye"></i></button>
+                <button class="btn btn-outline-info" onclick="urlUpdate(${id})"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-outline-danger" onclick="urlDelete(${id})"><i class="bi bi-trash"></i></button>
+              </div>
+            </li>
         `;
 
         let containerModal = document.getElementById('containerModal');
@@ -68,16 +75,13 @@ $(document).ready(function() {
                     <span class="badge badge-${scheme}">${status}</span>
                     ${url}
                   </h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <span>${date}</span>
                 </div>
                 <div class="modal-body" style="word-break: break-all;">
                   ${body || '<i>Body não encontrado</i>'}
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
             </div>
@@ -107,7 +111,7 @@ $(document).ready(function() {
       let formdata = new FormData();
       formdata.append('url', input.val());
 
-      fetch('./Sistema/addUrl.php', {
+      fetch('./api/urls/create.php', {
         method: 'post',
         body: formdata
       })
@@ -133,6 +137,31 @@ $(document).ready(function() {
     }
                   
   });
+
+  // Editar url
+  window.urlUpdate = (id) => {
+    alert(id);
+  }
+
+  // Remover url da lista
+  window.urlDelete = (id) => {
+    
+    let formdata = new FormData();
+    formdata.append('id', id);
+
+    fetch('./api/urls/delete.php', {
+      method: 'post',
+      body: formdata
+    })
+    .then(() => {
+      loadUrls();
+      let alert = showAlert("Url excluida com sucesso!", 'alert-success');
+      setTimeout(() => {
+        alert.remove();
+      }, 2000);
+    })
+
+  }
 
   // Atualizando pagina
   $("#btnAtualizar").on('click', () => {

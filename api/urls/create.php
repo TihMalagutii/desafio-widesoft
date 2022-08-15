@@ -6,7 +6,7 @@
         die();
     }
     
-    include('conexao.php');
+    include('../../system/connection.php');
 
     $url = $_POST['url'];
 

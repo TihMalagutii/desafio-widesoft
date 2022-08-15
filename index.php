@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!-- Css styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="system/style.css">
 
     <title>Interwebs Corp</title>
 </head>
@@ -59,7 +59,7 @@
         <!-- Formulario de login -->
         <div class="row">
             <div class="col-md-6 offset-md-3 bg-dark text-light formLogin">
-                <form action="Sistema/valida_login.php" method="post">
+                <form action="system/login.php" method="post">
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input name="email" type="email" class="form-control" id="email">

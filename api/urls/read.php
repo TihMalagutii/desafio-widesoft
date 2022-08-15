@@ -6,7 +6,7 @@
         die();
     }
     
-    include('conexao.php');
+    include('../../system/connection.php');
 
     $sql_code = 'SELECT * FROM urls';
     $result = $mysqli->query($sql_code);

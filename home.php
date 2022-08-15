@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <!-- Css styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="system/style.css">
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
         </a>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-2">
-                <a class="nav-link btn btn-outline-danger" href="Sistema/logoff.php">
+                <a class="nav-link btn btn-outline-danger" href="system/logout.php">
                     <i class="bi bi-box-arrow-left"></i> <span>Sair</span>
                 </a>
             </li>
@@ -62,7 +62,6 @@
                     </div>
                 </form>
                 <ul id="listaUrl" class="list-group"></ul>
-                
             </div>
         </div>
     </div>
@@ -71,7 +70,7 @@
     <div id="containerModal"></div>
 
     <!-- Scripts -->
-    <script src="Sistema/script.js"></script>
+    <script src="system/script.js"></script>
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

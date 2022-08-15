@@ -1,7 +1,7 @@
 <?php
     
     require '../vendor/autoload.php';
-    include('conexao.php');
+    include('connection.php');
     date_default_timezone_set('America/Sao_Paulo');
 
     $sql_code = 'SELECT id, url FROM urls WHERE status IS NULL';
