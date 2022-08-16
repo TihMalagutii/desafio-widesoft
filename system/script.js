@@ -33,6 +33,7 @@ $(document).ready(function() {
     .then(res => res.json())
     .then(data => {
       let output = '';
+      containerModal.innerHTML = '';
       for(let i in data){
 
         let {id, url, body, status, date} = data[i];
@@ -49,7 +50,6 @@ $(document).ready(function() {
           '3': 'warning',
           '4': 'danger'
         }[`${status ?? '0'}`[0]]
-
 
         output += `
             <li class="list-group-item mt-2 d-flex justify-content-between align-items-center flex-wrap">
@@ -75,7 +75,7 @@ $(document).ready(function() {
                     <span class="badge badge-${scheme}">${status}</span>
                     ${url}
                   </h5>
-                  <span>${date}</span>
+                  <span>${date || '<i>Em processamento...</i>'}</span>
                 </div>
                 <div class="modal-body" style="word-break: break-all;">
                   ${body || '<i>Body não encontrado</i>'}
@@ -89,7 +89,6 @@ $(document).ready(function() {
         `;
 
       }
-
       $('#listaUrl').html(output);
 
     })
@@ -126,8 +125,6 @@ $(document).ready(function() {
       input.val('');
 
     } else {
-
-      input.val('');
       
       let alert = showAlert("Url invalida!", "alert-danger");
       setTimeout(() => {
@@ -139,8 +136,65 @@ $(document).ready(function() {
   });
 
   // Editar url
-  window.urlUpdate = (id) => {
-    alert(id);
+  window.urlUpdate = (idLista) => {
+    
+    let divBtnUrl = $('#divBtnUrl')
+
+    fetch('./api/urls/read.php')
+    .then(res => res.json())
+    .then(data => {
+    
+      for (let i in data) {
+
+        let {id, url} = data[i];
+        
+        if(id == idLista){
+
+          input.val(url);
+          adcUrl.remove()
+          divBtnUrl.html('<button id="updateUrl" type="button" class="btn btn-info"><i class="bi bi-box-arrow-down"></i></button>')
+
+          $('#updateUrl').on('click', () => {
+            
+            let newUrl = input.val();
+            let formdata = new FormData();
+            formdata.append('newUrl', newUrl);
+            formdata.append('id', id);
+
+            if(isValidHttpUrl(newUrl)) {
+
+              fetch('./api/urls/update.php', {
+                method: 'post',
+                body: formdata
+              })
+              .then(() => {
+                adcUrl.remove()
+                divBtnUrl.html('<button id="adcUrl" type="button" class="btn btn-info">+</button>')
+                input.val('');
+                loadUrls();
+                let alert = showAlert("Url modificada com sucesso!", 'alert-success');
+                setTimeout(() => {
+                  alert.remove();
+                }, 2000);
+              })
+              
+            } else {
+
+              let alert = showAlert("Url invalida!", "alert-danger");
+              setTimeout(() => {
+                alert.remove();
+              }, 2000);
+
+            }
+
+          })
+
+        }
+
+      } 
+
+    })
+
   }
 
   // Remover url da lista

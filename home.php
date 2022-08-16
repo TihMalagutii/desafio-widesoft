@@ -57,8 +57,8 @@
             <div class="pt-2 col-md-10 offset-md-1">
                 <form class="input-group">
                     <input id="inputUrl" class="form-control" type="url" placeholder="Adicionar url">
-                    <div class="input-group-append">
-                        <butto id="adcUrl" type="button" class="btn btn-info">+</button>
+                    <div id="divBtnUrl" class="input-group-append">
+                        <button id="adcUrl" type="button" class="btn btn-info">+</button>
                     </div>
                 </form>
                 <ul id="listaUrl" class="list-group"></ul>
