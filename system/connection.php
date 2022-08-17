@@ -1,8 +1,8 @@
 <?php
 
-    $usuario = 'root';
+    $usuario = '';
     $senha = '';
-    $database = 'desafio';
+    $database = '';
     $host = '';
 
     $mysqli = new mysqli($host, $usuario, $senha, $database);

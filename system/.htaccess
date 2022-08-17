@@ -1,0 +1,9 @@
+Options -Indexes
+
+<Files request.php>
+    Deny from all
+</Files>
+
+<Files connection.php>
+    Deny from all
+</Files>

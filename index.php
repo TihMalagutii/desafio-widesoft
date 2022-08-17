@@ -62,19 +62,18 @@
                 <form action="system/login.php" method="post">
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input name="email" type="email" class="form-control" id="email">
+                        <input id="email" name="email" type="email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha:</label>
-                        <input name="password" type="password" class="form-control" id="password">
+                        <input id="password" name="password" type="password" class="form-control" id="password">
                     </div>
-                    <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Entrar</button>
+                    <button id="btnLogin" type="submit" class="btn btn-outline-primary btn-lg btn-block">Entrar</button>
                 </form>
             </div>
         </div>
 
     </div>
-
 
     <!-- Bootstrap Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
